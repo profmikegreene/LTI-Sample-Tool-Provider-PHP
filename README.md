@@ -2,4 +2,21 @@
 
 The wiki area of this repository contains [documentation](https://github.com/IMSGlobal/LTI-Sample-Tool-Provider-PHP/wiki) for installing and using this application.
 
+### todo
+- [ ] create mysql install script
+- [ ] remove need to run extra composer command
+- [ ] delete dbtest.php
+
+
+### Install
+`docker run --rm -v $(pwd)/app:/app composer:latest install`
+
+
+docker-compose up
+
+
+
+
+
+
 &copy; 2016 IMS Global Learning Consortium Inc. All Rights Reserved. Trademark Policy - (www.imsglobal.org/trademarks)

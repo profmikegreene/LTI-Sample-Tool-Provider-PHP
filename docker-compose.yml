@@ -1,0 +1,42 @@
+version: '2'
+services:
+  app:
+    build: ./app
+    ports:
+      - 8888:80
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - dnet
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_HOST=mysql
+      - DB_NAME=app
+  mysql:
+    image: mysql
+    ports:
+      - 3636:3306
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_HOST=mysql
+      - DB_NAME=app
+    volumes:
+      - ./mysql/mysql:/var/lib/mysql
+    networks:
+      dnet:
+        aliases:
+          - mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 9999:80
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=password
+      - PMA_HOST=mysql
+    networks:
+      - dnet
+networks:
+  dnet:
